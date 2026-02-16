@@ -1,0 +1,26 @@
+package com.reasturant;
+
+
+import java.util.Scanner;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App {
+	public static void main(String[] args) {
+		Scanner ch = new Scanner(System.in);
+		
+		Configuration cfg = new Configuration().configure();
+	    SessionFactory factory = cfg.buildSessionFactory();
+	    
+	    
+		System.out.println("Display options....");
+		System.out.println("1. Add Menu item");
+		System.out.println("2. View All items");
+		System.out.println("3 Update Price");
+		System.out.println("4. Delete Item");
+		System.out.println("5. Exit");
+		
+	}
+}

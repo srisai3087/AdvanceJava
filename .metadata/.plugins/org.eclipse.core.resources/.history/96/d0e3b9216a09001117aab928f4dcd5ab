@@ -1,0 +1,9 @@
+package onetone;
+
+public class Passport {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

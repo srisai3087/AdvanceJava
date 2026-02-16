@@ -1,0 +1,7 @@
+package com.reasturant;
+
+public class App {
+	public static void main(String[] args) {
+		Scanner ch = new Scanner(System.in);
+	}
+}

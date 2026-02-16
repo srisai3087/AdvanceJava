@@ -1,0 +1,54 @@
+package onetone;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "passport")
+public class Passport {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int passportId;
+
+    private String passportNum;
+    private String country;
+
+    // Default constructor (MANDATORY)
+    public Passport() {}
+
+    public Passport(String passportNum, String country) {
+        this.passportNum = passportNum;
+        this.country = country;
+    }
+
+    public int getPassportId() {
+        return passportId;
+    }
+
+    public String getPassportNum() {
+        return passportNum;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setPassportNum(String passportNum) {
+        this.passportNum = passportNum;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "PassportId: " + passportId +
+               " PassportNumber: " + passportNum +
+               " Country: " + country;
+    }
+}

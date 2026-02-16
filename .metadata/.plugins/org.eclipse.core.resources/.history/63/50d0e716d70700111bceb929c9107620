@@ -1,0 +1,54 @@
+package com.sai.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.sai.entity.Student;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        // Build SessionFactory
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .buildSessionFactory();
+
+        Session session = factory.openSession();
+
+        // ================== CREATE ==================
+        Transaction tx1 = session.beginTransaction();
+
+        Student s1 = new Student("Sai", "Hyderabad");
+        session.persist(s1);
+
+        tx1.commit();
+        System.out.println("Student Inserted");
+
+        // ================== READ ==================
+        Student student = session.get(Student.class, s1.getId());
+        System.out.println("Read: " + student.getName() + " - " + student.getCity());
+
+        // ================== UPDATE ==================
+        Transaction tx2 = session.beginTransaction();
+
+        student.setCity("Bangalore");
+        session.merge(student);
+
+        tx2.commit();
+        System.out.println("Student Updated");
+
+        // ================== DELETE ==================
+        Transaction tx3 = session.beginTransaction();
+
+        session.remove(student);
+
+        tx3.commit();
+        System.out.println("Student Deleted");
+
+        session.close();
+        factory.close();
+    }
+}
